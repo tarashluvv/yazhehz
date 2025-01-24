@@ -303,8 +303,8 @@ function MainComponent() {
           </button>
         </div>
       </div>
-
-      <main className="flex flex-col flex-grow">
+    </div>
+  )}
         {image ? (
           <div className="relative flex-grow flex items-center justify-center bg-gray-100">
             <img
@@ -315,16 +315,35 @@ function MainComponent() {
           </div>
         ) : (
           <div className="middle">
-          <div className="img-upload" style={{ height: '50vh' }}>
+          <div className="img-upload" style={{ height: "50vh" }}>
             <div className="input-img">
-              <input type="file" name="img-upl" id="idupload" className="input-file" />
+              <input
+                type="file"
+                name="img-upl"
+                id="idupload"
+                className="input-file"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
               <label htmlFor="idupload">
                 <span>Загрузить</span>
               </label>
             </div>
-          </div>
-        </div>
-        )}
+            </div>
+            {uploadedImage && (
+              <div className="uploaded-image">
+                <img
+                  src={uploadedImage}
+                  alt="Uploaded"
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
+                    marginTop: "1rem",
+                  }}
+                />
+              </div>
+            )}
         <div className="p-4 space-y-3">
           <button
             type="button"
@@ -341,11 +360,10 @@ function MainComponent() {
             Отправить документ
           </button>
         </div>
-      </main>
     </div>
   );
 
   return currentPage === "home" ? <HomePage /> : <ProjectXPage />;
-}
 
+};
 export default MainComponent;
