@@ -28,8 +28,7 @@ function MainComponent() {
     const metaTags = [
       {
         name: "viewport",
-        content:
-          "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+        content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
       },
       {
         name: "description",
@@ -46,33 +45,35 @@ function MainComponent() {
       { name: "application-name", content: "Kaspi" },
       { name: "format-detection", content: "telephone=no" },
     ];
-
+  
     metaTags.forEach(({ name, content }) => {
-      const meta = document.createElement("meta");
-      meta.name = name;
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.name = name;
+        document.head.appendChild(meta);
+      }
       meta.content = content;
-      document.head.appendChild(meta);
     });
-
-    const manifestLink = document.createElement("link");
+  
+    const manifestLink = document.querySelector('link[rel="manifest"]') || document.createElement("link");
     manifestLink.rel = "manifest";
     manifestLink.href = "/manifest.json";
-    document.head.appendChild(manifestLink);
-
+    if (!manifestLink.parentNode) {
+      document.head.appendChild(manifestLink);
+    }
+  
     return () => {
       metaTags.forEach(({ name }) => {
         const meta = document.querySelector(`meta[name="${name}"]`);
-        if (meta) {
-          meta.remove();
-        }
+        if (meta) meta.remove();
       });
+  
       const manifest = document.querySelector('link[rel="manifest"]');
-      if (manifest) {
-        manifest.remove();
-      }
+      if (manifest) manifest.remove();
     };
   }, []);
-
+  
   const HomePage = () => (
     <div className="min-h-screen bg-gray-100 pb-16">
       <div className="bg-gray-200 p-4 sticky top-0 z-10">
