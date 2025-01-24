@@ -287,7 +287,7 @@ function MainComponent() {
             className="text-[#FF0033] flex items-center"
           >
             <i className="fas fa-chevron-left text-xl mr-2"></i>
-            &lt;
+            <p>&#x3C;</p>
           </button>
           <h1 className="text-center flex-1 text-lg">Удостоверение личности</h1>
         </div>
