@@ -328,7 +328,20 @@ function MainComponent() {
               </div>
             </label>
           </div>
-        )}
+          )}
+          {image ? (
+            <div className="relative flex-grow flex items-center justify-center bg-gray-100">
+              <img
+                src={image}
+                alt="Uploaded Image"
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+              />
+            </div>
+          ) : (
+            <div className="flex-grow flex items-center justify-center">
+              <p className="text-sm text-gray-500">Пожалуйста, загрузите изображение.</p>
+            </div>
+          )}
 
         <div className="p-4 space-y-3">
           <button
