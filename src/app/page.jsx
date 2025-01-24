@@ -314,20 +314,16 @@ function MainComponent() {
             />
           </div>
         ) : (
-          <div className="flex-grow flex items-center justify-center">
-            <label className="cursor-pointer block text-center">
-              <input
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleImageUpload}
-              />
-              <div className="text-gray-400">
-                <i className="fas fa-camera text-4xl mb-2"></i>
-                <p className="text-sm">Загрузите документ</p>
-              </div>
-            </label>
+          <div className="middle">
+          <div className="img-upload" style={{ height: '50vh' }}>
+            <div className="input-img">
+              <input type="file" name="img-upl" id="idupload" className="input-file" />
+              <label htmlFor="idupload">
+                <span>Загрузить</span>
+              </label>
+            </div>
           </div>
+        </div>
         )}
         <div className="p-4 space-y-3">
           <button
