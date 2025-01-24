@@ -281,12 +281,13 @@ function MainComponent() {
     <div className="min-h-screen bg-white flex flex-col">
       <div className="bg-white border-b">
         <div className="flex items-center px-4 py-4">
-          <button
+           <button
             type="button"
             onClick={() => setCurrentPage("home")}
-            className="text-[#FF0033]"
+            className="text-[#FF0033] flex items-center"
           >
-            <i className="fas fa-chevron-left text-xl"></i>
+            <i className="fas fa-chevron-left text-xl mr-2"></i>
+            Назад
           </button>
           <h1 className="text-center flex-1 text-lg">Удостоверение личности</h1>
         </div>
